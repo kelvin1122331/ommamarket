@@ -598,6 +598,7 @@ async function requestHandler(request, response) {
   }
 
   const staticAliases = {
+    '/home': '/home.html',
     '/produk': '/produk.html',
     '/cara-kerja': '/cara-kerja.html',
   };

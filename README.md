@@ -9,7 +9,7 @@ A focused Shopee affiliate storefront with a server-side admin dashboard.
 - Hidden admin entry: click the `ommamarket` logo three times within two seconds.
 - Server-side admin authentication with scrypt password verification, rate-limited login attempts, HTTP-only session cookies, CSRF tokens, and same-origin checks.
 - Product CRUD backed by JSON files so the project runs without a database dependency.
-- Multi-page frontend: `/`, `/produk.html`, and `/cara-kerja.html`.
+- Multi-page frontend: `/` welcome page, `/home.html` (also `/home`) storefront utama, `/produk.html`, and `/cara-kerja.html`.
 - Shared `public/styles.css` and `public/app.js` keep the pages consistent while the admin overlay is available from every page.
 
 ## Run locally

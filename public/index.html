@@ -11,14 +11,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
 </head>
-<body data-page="home">
+<body data-page="welcome">
   <div class="site-shell" id="top">
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" id="brandTrigger" href="/" aria-label="ommamarket, kembali ke beranda"><span class="brand-word">omma<span>market</span></span><span class="brand-note">curated finds</span></a>
-        <nav class="main-nav" aria-label="Navigasi utama"><a class="active" href="/">Beranda</a><a href="/produk.html">Produk</a><a href="/cara-kerja.html">Cara kerja</a></nav>
+        <a class="brand" id="brandTrigger" href="/" aria-label="ommamarket, kembali ke welcome page"><span class="brand-word">omma<span>market</span></span><span class="brand-note">curated finds</span></a>
+        <nav class="main-nav" aria-label="Navigasi utama"><a class="active" href="/">Welcome</a><a href="/home.html">Utama</a><a href="/produk.html">Produk</a><a href="/cara-kerja.html">Cara kerja</a></nav>
         <form class="search-form" id="searchForm" role="search"><svg class="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.6"></circle><path d="m16 16 4.2 4.2"></path></svg><label class="sr-only" for="searchInput">Cari produk</label><input id="searchInput" type="search" autocomplete="off" placeholder="Cari produk yang kamu butuhkan..."><button class="clear-search hidden" id="clearSearch" type="button" aria-label="Hapus pencarian">×</button></form>
-        <div class="header-actions"><a class="header-link" href="/produk.html">Lihat koleksi <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path></svg></a></div>
+        <div class="header-actions"><a class="header-link" href="/home.html">Masuk ke utama <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path></svg></a></div>
       </div>
     </header>
 
@@ -27,16 +27,26 @@
         <section class="welcome-hero" aria-labelledby="welcomeTitle">
           <div class="welcome-copy">
             <p class="welcome-overline"><span class="welcome-line"></span> Welcome to ommamarket</p>
-            <h1 id="welcomeTitle">Hai, selamat datang di rak pilihanmu.</h1>
+            <h1 id="welcomeTitle">Belanja lebih ringan, mulai dari pilihan yang berarti.</h1>
             <p class="welcome-lede">Tempat kecil untuk menemukan produk yang terasa tepat—dipilih dengan konteks, dijelaskan dengan jujur, dan siap kamu lanjutkan ke Shopee.</p>
-            <div class="welcome-actions"><a class="button button-welcome" href="/produk.html">Masuk ke koleksi <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path></svg></a><a class="welcome-text-link" href="/cara-kerja.html">Kenali cara kami memilih <span aria-hidden="true">↗</span></a></div>
+            <div class="welcome-actions"><a class="button button-welcome" href="/home.html">Jelajahi <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path></svg></a><a class="welcome-text-link" href="/cara-kerja.html">Kenali cara kami memilih <span aria-hidden="true">↗</span></a></div>
             <div class="welcome-signals"><div><span>01</span><strong>Less noise</strong><small>lebih sedikit kebisingan</small></div><div><span>02</span><strong>More context</strong><small>lebih banyak alasan</small></div><div><span>03</span><strong>Your choice</strong><small>keputusan tetap milikmu</small></div></div>
           </div>
-          <div class="welcome-art" aria-label="Welcome note dari ommamarket">
-            <div class="welcome-card">
-              <div class="welcome-card-head"><span>OMMA / WELCOME NOTE</span><span>001</span></div>
-              <div class="welcome-card-body"><div class="welcome-stamp">omma<br><span>market</span></div><p class="welcome-card-kicker">A smaller shelf<br>for better finds.</p><h2>Mulai dari<br>yang kamu cari.</h2><div class="welcome-card-rule"></div><p class="welcome-card-note">Tidak perlu terburu-buru. Lihat, pertimbangkan, lalu pilih dengan caramu sendiri.</p></div>
-              <div class="welcome-card-foot"><span>curated with care</span><span>07 / 24</span></div>
+          <div class="welcome-art welcome-art-3d" aria-label="Scene 3D ommamarket">
+            <div class="welcome-scene">
+              <div class="scene-light"></div>
+              <div class="scene-platform"><span></span></div>
+              <div class="scene-store">
+                <div class="store-roof"><span></span></div>
+                <div class="store-sign"><b>omma</b><strong>market</strong></div>
+                <div class="store-window"><div class="window-line"></div><div class="window-shelf"><i></i><i></i><i></i></div></div>
+                <div class="store-door"><span>01</span></div>
+                <div class="store-side"></div>
+              </div>
+              <div class="scene-product scene-product-one"><span class="product-face">01</span><b>GOOD<br>FINDS</b></div>
+              <div class="scene-product scene-product-two"><span class="product-face">02</span><b>USEFUL<br>THINGS</b></div>
+              <div class="scene-bag"><div>omma<br><span>market</span></div><i></i></div>
+              <div class="scene-tag">CURATED<br><strong>WITH CARE</strong></div>
             </div>
             <div class="welcome-caption"><span class="welcome-caption-dot"></span><span>no rush / just useful things</span></div>
           </div>
@@ -49,14 +59,12 @@
         <div class="strip-item"><span class="strip-number">03</span><div class="strip-copy"><strong>Berangkat ke Shopee</strong><p>Tombol beli membawa kamu ke tautan produk yang disiapkan admin.</p></div></div>
       </section>
 
-      <section class="home-shelf" aria-labelledby="shelfTitle">
-        <div class="home-shelf-grid"><div><p class="section-kicker">A gentle starting point</p><h2 id="shelfTitle">Satu rak kecil untuk keputusan belanja yang lebih ringan.</h2><p class="home-shelf-copy">Katalog kami dimulai dari kebutuhan yang jelas. Saat produk tersedia, kamu bisa membaca konteksnya lalu melanjutkan pembelian langsung di Shopee.</p><div class="home-shelf-links"><a class="home-shelf-link primary" href="/produk.html">Lihat semua produk <span aria-hidden="true">↗</span></a><a class="home-shelf-link" href="/cara-kerja.html">Pelajari cara kerja <span aria-hidden="true">→</span></a></div></div><div class="home-shelf-stat"><small>current shelf</small><strong data-product-count>0 produk</strong><p data-catalog-status>Rak sedang disiapkan. Pilihan baru akan muncul di halaman produk.</p></div></div>
-      </section>
+      <section class="home-shelf" aria-labelledby="shelfTitle"><div class="home-shelf-grid"><div><p class="section-kicker">A gentle starting point</p><h2 id="shelfTitle">Satu rak kecil untuk keputusan belanja yang lebih ringan.</h2><p class="home-shelf-copy">Katalog kami dimulai dari kebutuhan yang jelas. Saat produk tersedia, kamu bisa membaca konteksnya lalu melanjutkan pembelian langsung di Shopee.</p><div class="home-shelf-links"><a class="home-shelf-link primary" href="/home.html">Masuk ke halaman utama <span aria-hidden="true">↗</span></a><a class="home-shelf-link" href="/produk.html">Lihat semua produk <span aria-hidden="true">→</span></a></div></div><div class="home-shelf-stat"><small>current shelf</small><strong data-product-count>0 produk</strong><p data-catalog-status>Rak sedang disiapkan. Pilihan baru akan muncul di halaman utama.</p></div></div></section>
 
       <aside class="editorial-note"><p><strong>Catatan transparansi:</strong> ommamarket adalah katalog produk. Saat kamu melanjutkan pembelian melalui tautan di sini, kami dapat menerima komisi tanpa mengubah harga yang kamu lihat di Shopee.</p></aside>
     </main>
 
-    <footer class="site-footer"><div class="footer-inner"><div><div class="footer-brand">ommamarket</div><p class="footer-copy">© <span id="currentYear"></span> ommamarket. Semua hak dilindungi.</p><nav class="footer-nav" aria-label="Navigasi footer"><a href="/produk.html">Produk</a><a href="/cara-kerja.html">Cara kerja</a></nav></div><div class="footer-credit">Powered by <strong>Shopee</strong></div></div></footer>
+    <footer class="site-footer"><div class="footer-inner"><div><div class="footer-brand">ommamarket</div><p class="footer-copy">© <span id="currentYear"></span> ommamarket. Semua hak dilindungi.</p><nav class="footer-nav" aria-label="Navigasi footer"><a href="/home.html">Utama</a><a href="/produk.html">Produk</a><a href="/cara-kerja.html">Cara kerja</a></nav></div><div class="footer-credit">Powered by <strong>Shopee</strong></div></div></footer>
   </div>
   <script src="/app.js" defer></script>
 </body>

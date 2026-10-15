@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jelajahi pilihan produk ommamarket dan lanjutkan pembelian melalui Shopee.">
+  <meta name="theme-color" content="#ee4d2d">
+  <title>Produk — ommamarket</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="products">
+  <div class="site-shell" id="top">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" id="brandTrigger" href="/" aria-label="ommamarket, kembali ke beranda"><span class="brand-word">omma<span>market</span></span><span class="brand-note">curated finds</span></a>
+        <nav class="main-nav" aria-label="Navigasi utama"><a href="/">Beranda</a><a class="active" href="/produk.html">Produk</a><a href="/cara-kerja.html">Cara kerja</a></nav>
+        <form class="search-form" id="searchForm" role="search"><svg class="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.6"></circle><path d="m16 16 4.2 4.2"></path></svg><label class="sr-only" for="searchInput">Cari produk</label><input id="searchInput" type="search" autocomplete="off" placeholder="Cari berdasarkan nama produk..."><button class="clear-search hidden" id="clearSearch" type="button" aria-label="Hapus pencarian">×</button></form>
+        <div class="header-actions"><a class="header-link" href="/cara-kerja.html">Cara kerja <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path></svg></a></div>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <div class="page-intro-wrap">
+        <section class="page-intro product-page-intro" aria-labelledby="productsIntroTitle">
+          <div class="page-intro-grid">
+            <div><p class="section-kicker">The current shelf</p><h1 id="productsIntroTitle">Pilihan yang sedang tersedia.</h1></div>
+            <div><p class="page-intro-copy">Sebuah rak yang sengaja dibuat ringkas. Baca detailnya, cek harganya, lalu lanjutkan dengan tenang ke Shopee.</p><div class="page-intro-mark"><span data-product-count>0 produk</span></div></div>
+          </div>
+        </section>
+      </div>
+
+      <section class="products-section product-page-section" aria-labelledby="productGridTitle">
+        <div class="section-heading"><div><p class="section-kicker">Browse the shelf</p><h2 id="productGridTitle">Cari yang kamu butuhkan</h2></div><p class="section-copy">Gunakan pencarian berdasarkan nama produk. Harga ditampilkan dalam Rupiah dan tombol beli akan membuka tautan Shopee.</p></div>
+        <div class="catalog-toolbar"><span class="catalog-count" id="resultCount">Memuat produk...</span><button class="text-button hidden" id="emptyClearSearch" type="button">Hapus pencarian</button></div>
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+        <div class="empty-state hidden" id="emptyState"><div class="empty-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h16v13H4z"></path><path d="M8 6.5 9.5 4h5L16 6.5"></path><circle cx="12" cy="12.7" r="2.2"></circle></svg></div><h3 id="emptyTitle">Belum ada produk tersedia</h3><p id="emptyDescription">Rak ini sedang disiapkan. Produk yang sudah dikurasi akan muncul di sini.</p><button class="text-button hidden" id="emptyClearButton" type="button">Kembali ke semua produk</button></div>
+      </section>
+
+      <aside class="editorial-note"><p><strong>Catatan transparansi:</strong> ommamarket adalah katalog afiliasi. Saat kamu melanjutkan pembelian melalui tautan produk, kami dapat menerima komisi tanpa mengubah harga yang kamu lihat di Shopee.</p></aside>
+    </main>
+
+    <footer class="site-footer"><div class="footer-inner"><div><div class="footer-brand">ommamarket</div><p class="footer-copy">© <span id="currentYear"></span> ommamarket. Semua hak dilindungi.</p><nav class="footer-nav" aria-label="Navigasi footer"><a href="/">Beranda</a><a href="/cara-kerja.html">Cara kerja</a></nav></div><div class="footer-credit">Powered by <strong>Shopee Affiliate</strong></div></div></footer>
+  </div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

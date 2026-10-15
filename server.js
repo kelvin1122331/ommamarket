@@ -597,7 +597,11 @@ async function requestHandler(request, response) {
     return;
   }
 
-  await serveStatic(request, response, url.pathname);
+  const staticAliases = {
+    '/produk': '/produk.html',
+    '/cara-kerja': '/cara-kerja.html',
+  };
+  await serveStatic(request, response, staticAliases[url.pathname] || url.pathname);
 }
 
 async function bootstrap() {

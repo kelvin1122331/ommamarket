@@ -1,0 +1,1191 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ommamarket — pilihan produk yang dikurasi untuk belanja lebih cerdas di Shopee.">
+  <meta name="theme-color" content="#ee4d2d">
+  <title>ommamarket — curated finds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #211d1a;
+      --ink-soft: #4f4943;
+      --muted: #817870;
+      --paper: #fbf8f3;
+      --panel: #fffdf9;
+      --panel-muted: #f3eee8;
+      --line: #e9e0d7;
+      --line-strong: #d9cfc5;
+      --brand: #ee4d2d;
+      --brand-deep: #b92f20;
+      --brand-soft: #fff0ea;
+      --sun: #ffb55f;
+      --sage: #75846a;
+      --danger: #b9322b;
+      --success: #42735e;
+      --shadow-soft: 0 16px 40px rgba(63, 41, 26, .08);
+      --shadow-card: 0 12px 26px rgba(63, 41, 26, .08), 0 2px 4px rgba(63, 41, 26, .04);
+      --radius-lg: 28px;
+      --radius-md: 16px;
+      --radius-sm: 11px;
+      --max-width: 1360px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Poppins", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body.is-locked { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: rgba(238, 77, 45, .2); }
+    .hidden { display: none !important; }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(217, 207, 197, .76);
+      background: rgba(251, 248, 243, .96);
+    }
+    .header-inner {
+      display: grid;
+      grid-template-columns: minmax(170px, .7fr) minmax(280px, 1fr) minmax(170px, .7fr);
+      align-items: center;
+      gap: 30px;
+      width: min(calc(100% - 48px), var(--max-width));
+      min-height: 82px;
+      margin: 0 auto;
+    }
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: max-content;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .brand-word {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -.075em;
+    }
+    .brand-word span { color: var(--brand); }
+    .brand-note {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .57rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .search-form {
+      display: flex;
+      align-items: center;
+      min-height: 46px;
+      padding: 0 8px 0 15px;
+      border: 1px solid var(--line-strong);
+      border-radius: 13px;
+      background: rgba(255, 253, 249, .8);
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .search-form:focus-within {
+      border-color: var(--brand);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(238, 77, 45, .1);
+    }
+    .icon-search { width: 19px; height: 19px; color: var(--muted); flex: 0 0 auto; }
+    .search-form input {
+      width: 100%;
+      min-width: 0;
+      padding: 0 12px;
+      border: 0;
+      outline: 0;
+      color: var(--ink);
+      background: transparent;
+      font-size: .83rem;
+    }
+    .search-form input::placeholder { color: #9b9189; }
+    .clear-search {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border: 0;
+      border-radius: 8px;
+      color: var(--muted);
+      background: transparent;
+      font-size: 1.2rem;
+      line-height: 1;
+      transition: color .2s ease, background .2s ease;
+    }
+    .clear-search:hover { color: var(--ink); background: var(--panel-muted); }
+    .header-actions { display: flex; justify-content: flex-end; }
+    .header-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-soft);
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      transition: color .2s ease;
+    }
+    .header-link:hover { color: var(--brand); }
+    .arrow-icon { width: 16px; height: 16px; transition: transform .2s ease; }
+    .header-link:hover .arrow-icon { transform: translate(2px, -2px); }
+
+    .page-main { overflow: hidden; }
+    .hero-wrap { padding: 28px 24px 0; }
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+      gap: clamp(34px, 6vw, 90px);
+      align-items: stretch;
+      width: min(100%, var(--max-width));
+      min-height: 520px;
+      margin: 0 auto;
+      padding: clamp(42px, 6vw, 86px);
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(124deg, #ef5431 0%, #df3d29 52%, #aa2423 100%);
+      color: #fff9f3;
+      isolation: isolate;
+    }
+    .hero::before {
+      position: absolute;
+      right: -11%;
+      bottom: -40%;
+      width: 60%;
+      height: 80%;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 50%;
+      content: "";
+      transform: rotate(-18deg);
+    }
+    .hero::after {
+      position: absolute;
+      top: 12%;
+      right: 33%;
+      width: 1px;
+      height: 76%;
+      background: linear-gradient(transparent, rgba(255, 255, 255, .26), transparent);
+      content: "";
+      transform: rotate(21deg);
+    }
+    .hero-copy, .hero-visual { position: relative; z-index: 1; }
+    .hero-copy { display: flex; flex-direction: column; justify-content: center; max-width: 650px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 22px;
+      color: rgba(255, 249, 243, .77);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sun); box-shadow: 0 0 0 5px rgba(255, 181, 95, .17); }
+    .hero h1 {
+      max-width: 670px;
+      margin: 0;
+      font-size: clamp(2.55rem, 5vw, 5.2rem);
+      font-weight: 700;
+      letter-spacing: -.085em;
+      line-height: .98;
+    }
+    .hero-lede {
+      max-width: 555px;
+      margin: 25px 0 0;
+      color: rgba(255, 249, 243, .79);
+      font-size: clamp(.93rem, 1.5vw, 1.06rem);
+      line-height: 1.8;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .01em;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button:focus-visible, .header-link:focus-visible, .brand:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 3px solid rgba(238, 77, 45, .32);
+      outline-offset: 3px;
+    }
+    .button-primary { color: var(--brand-deep); background: #fff8ef; box-shadow: 0 8px 20px rgba(100, 24, 19, .15); }
+    .button-primary:hover { background: #fff; box-shadow: 0 12px 24px rgba(100, 24, 19, .2); }
+    .button-quiet { gap: 8px; padding: 0; border: 0; color: #fff; background: transparent; }
+    .button-quiet:hover { color: #ffe2c8; }
+    .hero-facts { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 42px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .22); }
+    .hero-fact { display: flex; align-items: baseline; gap: 7px; color: rgba(255, 249, 243, .68); font-size: .68rem; }
+    .hero-fact strong { color: #fff; font-size: .92rem; font-weight: 700; }
+
+    .hero-visual { display: flex; align-items: center; justify-content: center; }
+    .curation-board {
+      width: min(100%, 420px);
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 22px;
+      background: rgba(74, 22, 19, .22);
+      box-shadow: 0 24px 55px rgba(68, 17, 14, .18);
+      transform: rotate(2deg);
+    }
+    .board-top, .board-bottom { display: flex; align-items: center; justify-content: space-between; }
+    .board-top { padding: 3px 3px 18px; color: rgba(255, 249, 243, .69); font-size: .63rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .board-status { display: inline-flex; align-items: center; gap: 7px; }
+    .board-status::before { width: 6px; height: 6px; border-radius: 50%; background: #ffd087; content: ""; }
+    .board-main { padding: 25px 22px 28px; border-radius: 15px; background: #fbefe3; color: var(--ink); }
+    .board-number { margin: 0; color: var(--brand); font-size: .68rem; font-weight: 800; letter-spacing: .14em; }
+    .board-main h2 { max-width: 280px; margin: 17px 0 26px; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; letter-spacing: -.07em; line-height: 1.02; }
+    .board-rule { width: 100%; height: 1px; background: #ddcfc3; }
+    .board-list { display: grid; gap: 13px; margin-top: 19px; }
+    .board-item { display: grid; grid-template-columns: 29px 1fr auto; align-items: center; gap: 11px; }
+    .board-index { color: var(--brand); font-size: .62rem; font-weight: 800; }
+    .board-item strong { display: block; font-size: .72rem; font-weight: 700; }
+    .board-item span { display: block; margin-top: 2px; color: var(--muted); font-size: .61rem; }
+    .board-item b { color: var(--ink-soft); font-size: .64rem; font-weight: 700; }
+    .board-bottom { padding: 15px 3px 1px; color: rgba(255, 249, 243, .7); font-size: .62rem; font-weight: 600; }
+
+    .curation-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      width: min(calc(100% - 48px), var(--max-width));
+      margin: 0 auto;
+      padding: 36px 0 21px;
+      border-bottom: 1px solid var(--line);
+    }
+    .strip-item { display: flex; gap: 14px; padding: 0 28px; border-left: 1px solid var(--line); }
+    .strip-item:first-child { padding-left: 0; border-left: 0; }
+    .strip-number { color: var(--brand); font-size: .7rem; font-weight: 800; letter-spacing: .1em; }
+    .strip-copy strong { display: block; font-size: .76rem; font-weight: 700; }
+    .strip-copy p { margin: 5px 0 0; color: var(--muted); font-size: .7rem; line-height: 1.55; }
+
+    .products-section { width: min(calc(100% - 48px), var(--max-width)); margin: 0 auto; padding: 82px 0 96px; }
+    .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; margin-bottom: 28px; }
+    .section-kicker { margin: 0 0 11px; color: var(--brand); font-size: .67rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .section-heading h2 { margin: 0; font-size: clamp(1.85rem, 3.4vw, 3rem); font-weight: 700; letter-spacing: -.075em; line-height: 1.05; }
+    .section-copy { max-width: 350px; margin: 0; color: var(--muted); font-size: .78rem; line-height: 1.75; text-align: right; }
+    .catalog-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 38px; margin-bottom: 18px; }
+    .catalog-count { color: var(--muted); font-size: .72rem; font-weight: 600; }
+    .text-button { padding: 0; border: 0; color: var(--brand); background: transparent; font-size: .72rem; font-weight: 700; }
+    .text-button:hover { color: var(--brand-deep); text-decoration: underline; text-underline-offset: 3px; }
+    .product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .product-card {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--panel);
+      box-shadow: var(--shadow-card);
+      animation: card-in .45s both;
+      animation-delay: calc(var(--card-index, 0) * 45ms);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .product-card:hover { border-color: #dbcfc4; box-shadow: 0 18px 36px rgba(63, 41, 26, .13); transform: translateY(-5px); }
+    @keyframes card-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .product-media { position: relative; aspect-ratio: 1.18 / 1; overflow: hidden; background: #f0e9e1; }
+    .product-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+    .product-card:hover .product-media img { transform: scale(1.035); }
+    .media-fallback { display: grid; position: absolute; inset: 0; place-items: center; padding: 20px; background: linear-gradient(135deg, #f5e6dc, #eed3c4); color: var(--brand-deep); text-align: center; }
+    .media-fallback span { max-width: 130px; font-size: .72rem; font-weight: 700; line-height: 1.4; }
+    .product-label { position: absolute; top: 13px; left: 13px; padding: 5px 8px; border: 1px solid rgba(255, 255, 255, .62); border-radius: 7px; color: #fff; background: rgba(33, 29, 26, .68); font-size: .54rem; font-weight: 800; letter-spacing: .1em; }
+    .product-body { display: flex; flex: 1; flex-direction: column; padding: 18px; }
+    .product-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .stars { color: #e29a3e; font-size: .76rem; letter-spacing: .08em; line-height: 1; }
+    .rating-text { color: var(--muted); font-size: .62rem; font-weight: 600; }
+    .product-body h3 { margin: 15px 0 7px; overflow: hidden; font-size: .98rem; font-weight: 700; letter-spacing: -.025em; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }
+    .product-description { display: -webkit-box; min-height: 42px; margin: 0; overflow: hidden; color: var(--muted); font-size: .72rem; line-height: 1.65; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+    .product-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-top: 22px; }
+    .product-price { color: var(--brand-deep); font-size: .98rem; font-weight: 800; letter-spacing: -.035em; white-space: nowrap; }
+    .buy-link { display: inline-flex; align-items: center; justify-content: flex-end; gap: 5px; color: var(--brand); font-size: .67rem; font-weight: 800; text-align: right; transition: color .2s ease, gap .2s ease; }
+    .buy-link:hover { gap: 8px; color: var(--brand-deep); }
+    .buy-link svg { width: 14px; height: 14px; }
+
+    .empty-state { padding: 76px 24px; border: 1px dashed var(--line-strong); border-radius: 18px; background: rgba(255, 253, 249, .56); text-align: center; }
+    .empty-icon { display: grid; place-items: center; width: 58px; height: 58px; margin: 0 auto 20px; border-radius: 15px; color: var(--brand); background: var(--brand-soft); }
+    .empty-icon svg { width: 27px; height: 27px; }
+    .empty-state h3 { margin: 0; font-size: 1.12rem; font-weight: 700; letter-spacing: -.035em; }
+    .empty-state p { max-width: 380px; margin: 9px auto 0; color: var(--muted); font-size: .76rem; line-height: 1.7; }
+    .empty-state .text-button { margin-top: 18px; }
+    .loading-grid { display: grid; grid-template-columns: inherit; gap: inherit; }
+    .skeleton-card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--panel); }
+    .skeleton-block { background: linear-gradient(100deg, #eee7df 20%, #f8f3ee 38%, #eee7df 56%); background-size: 250% 100%; animation: shimmer 1.5s infinite; }
+    .skeleton-media { aspect-ratio: 1.18 / 1; }
+    .skeleton-copy { height: 15px; margin: 18px 18px 9px; border-radius: 5px; }
+    .skeleton-copy.short { width: 58%; margin-top: 0; }
+    @keyframes shimmer { to { background-position: -250% 0; } }
+
+    .editorial-note { width: min(calc(100% - 48px), var(--max-width)); margin: 0 auto 96px; padding: 31px 34px; border-left: 3px solid var(--brand); background: #f4eee7; }
+    .editorial-note p { max-width: 780px; margin: 0; color: var(--ink-soft); font-size: .82rem; line-height: 1.8; }
+    .editorial-note strong { color: var(--ink); }
+
+    .site-footer { padding: 34px 24px 42px; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: min(100%, var(--max-width)); margin: 0 auto; }
+    .footer-brand { font-size: .86rem; font-weight: 800; letter-spacing: -.05em; }
+    .footer-copy { margin: 5px 0 0; color: var(--muted); font-size: .65rem; }
+    .footer-credit { color: var(--muted); font-size: .65rem; text-align: right; }
+    .footer-credit strong { color: var(--brand); font-weight: 700; }
+
+    .modal-backdrop { display: grid; position: fixed; z-index: 80; inset: 0; place-items: center; padding: 20px; background: rgba(29, 24, 20, .68); animation: fade-in .18s ease both; }
+    .modal-panel { position: relative; width: min(100%, 430px); padding: 31px; border: 1px solid rgba(255, 255, 255, .16); border-radius: 22px; background: var(--panel); box-shadow: 0 28px 80px rgba(24, 17, 12, .28); animation: panel-in .22s ease both; }
+    .modal-panel-small { width: min(100%, 450px); }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes panel-in { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .modal-kicker { margin: 0 0 9px; color: var(--brand); font-size: .64rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .modal-panel h2 { margin: 0; font-size: 1.6rem; font-weight: 700; letter-spacing: -.065em; line-height: 1.05; }
+    .modal-lede { margin: 11px 0 25px; color: var(--muted); font-size: .74rem; line-height: 1.65; }
+    .modal-close { display: grid; position: absolute; top: 20px; right: 20px; place-items: center; width: 32px; height: 32px; border: 0; border-radius: 8px; color: var(--muted); background: transparent; font-size: 1.3rem; line-height: 1; }
+    .modal-close:hover { color: var(--ink); background: var(--panel-muted); }
+    .form-stack { display: grid; gap: 16px; }
+    .field { display: grid; gap: 7px; }
+    .field label { color: var(--ink-soft); font-size: .7rem; font-weight: 700; }
+    .field input, .field textarea { width: 100%; padding: 12px 13px; border: 1px solid var(--line-strong); border-radius: 10px; outline: 0; color: var(--ink); background: #fff; font-size: .78rem; transition: border-color .2s ease, box-shadow .2s ease; }
+    .field textarea { min-height: 105px; resize: vertical; line-height: 1.6; }
+    .field input::placeholder, .field textarea::placeholder { color: #aaa099; }
+    .field input:focus, .field textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 4px rgba(238, 77, 45, .1); }
+    .field-hint { color: var(--muted); font-size: .62rem; }
+    .form-error { min-height: 18px; margin: 0; color: var(--danger); font-size: .7rem; font-weight: 600; }
+    .form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 11px; margin-top: 4px; }
+    .button-dark { color: #fff; background: var(--ink); }
+    .button-dark:hover { background: #3a322c; box-shadow: 0 10px 20px rgba(33, 29, 26, .17); }
+    .button-outline { border-color: var(--line-strong); color: var(--ink-soft); background: transparent; }
+    .button-outline:hover { border-color: var(--ink-soft); background: var(--panel-muted); }
+    .button-danger { color: #fff; background: var(--danger); }
+    .button-danger:hover { background: #95251f; }
+    .button:disabled { cursor: wait; opacity: .6; transform: none; }
+
+    .admin-dashboard { position: fixed; z-index: 70; inset: 0; overflow: auto; background: #e9e1d8; animation: fade-in .18s ease both; }
+    .dashboard-shell { width: min(calc(100% - 32px), 1440px); min-height: 100%; margin: 0 auto; padding: 22px 0 50px; }
+    .dashboard-header { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 25px; padding: 19px 24px; border: 1px solid rgba(217, 207, 197, .85); border-radius: 16px; background: var(--panel); box-shadow: 0 8px 20px rgba(63, 41, 26, .05); }
+    .dashboard-kicker { margin: 0 0 5px; color: var(--brand); font-size: .6rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .dashboard-header h2 { margin: 0; font-size: 1.25rem; font-weight: 700; letter-spacing: -.06em; }
+    .dashboard-header-right { display: flex; align-items: center; gap: 16px; }
+    .admin-user { color: var(--muted); font-size: .68rem; }
+    .dashboard-grid { display: grid; grid-template-columns: minmax(300px, .7fr) minmax(0, 1.3fr); align-items: start; gap: 22px; }
+    .admin-panel { padding: 24px; border: 1px solid rgba(217, 207, 197, .85); border-radius: 16px; background: var(--panel); box-shadow: 0 8px 20px rgba(63, 41, 26, .05); }
+    .admin-panel + .admin-panel { margin-top: 22px; }
+    .admin-panel-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+    .admin-panel h3 { margin: 0; font-size: 1rem; font-weight: 700; letter-spacing: -.04em; }
+    .admin-panel-heading p { margin: 5px 0 0; color: var(--muted); font-size: .67rem; line-height: 1.55; }
+    .stat-card { display: flex; align-items: flex-end; justify-content: space-between; padding: 20px; border-radius: 13px; background: var(--ink); color: #fff; }
+    .stat-card span { color: rgba(255, 255, 255, .65); font-size: .65rem; font-weight: 600; }
+    .stat-card strong { font-size: 2.05rem; font-weight: 700; letter-spacing: -.08em; line-height: 1; }
+    .admin-form .form-actions { margin-top: 19px; }
+    .admin-product-list { display: grid; gap: 10px; }
+    .admin-product-item { display: grid; grid-template-columns: 62px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 11px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+    .admin-product-thumb { width: 62px; height: 62px; overflow: hidden; border-radius: 9px; background: var(--panel-muted); }
+    .admin-product-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .admin-product-info { min-width: 0; }
+    .admin-product-info strong { display: block; overflow: hidden; font-size: .75rem; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+    .admin-product-info span { display: block; margin-top: 4px; color: var(--brand-deep); font-size: .68rem; font-weight: 700; }
+    .admin-product-info small { display: block; overflow: hidden; margin-top: 3px; color: var(--muted); font-size: .6rem; text-overflow: ellipsis; white-space: nowrap; }
+    .admin-product-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+    .mini-button { min-height: 32px; padding: 0 10px; border: 1px solid var(--line-strong); border-radius: 8px; color: var(--ink-soft); background: var(--panel); font-size: .62rem; font-weight: 700; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+    .mini-button:hover { border-color: var(--ink-soft); background: var(--panel-muted); }
+    .mini-button.delete { border-color: #f0c5c1; color: var(--danger); }
+    .mini-button.delete:hover { border-color: var(--danger); background: #fff2f0; }
+    .admin-empty { padding: 38px 18px; border: 1px dashed var(--line-strong); border-radius: 12px; color: var(--muted); font-size: .7rem; text-align: center; }
+
+    .toast-region { display: grid; position: fixed; z-index: 100; right: 22px; bottom: 22px; gap: 9px; width: min(calc(100% - 44px), 360px); pointer-events: none; }
+    .toast { display: flex; align-items: flex-start; gap: 10px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 11px; background: var(--panel); box-shadow: 0 16px 35px rgba(39, 25, 16, .17); color: var(--ink-soft); font-size: .7rem; font-weight: 600; animation: toast-in .24s ease both; pointer-events: auto; }
+    .toast::before { width: 6px; min-width: 6px; height: 6px; margin-top: 5px; border-radius: 50%; background: var(--success); content: ""; }
+    .toast.error::before { background: var(--danger); }
+    @keyframes toast-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (min-width: 768px) {
+      .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .loading-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1024px) {
+      .product-grid { gap: 22px; }
+      .product-body { padding: 20px; }
+    }
+    @media (min-width: 1200px) {
+      .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .loading-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    @media (max-width: 1023px) {
+      .header-inner { grid-template-columns: minmax(160px, .5fr) minmax(250px, 1fr); }
+      .header-actions { display: none; }
+      .hero { grid-template-columns: minmax(0, 1fr) minmax(270px, .74fr); padding: 54px; gap: 32px; }
+      .hero h1 { font-size: clamp(2.7rem, 5vw, 4rem); }
+      .curation-board { transform: rotate(1deg) scale(.94); }
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .dashboard-left { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 22px; align-items: start; }
+      .dashboard-left .admin-panel + .admin-panel { margin-top: 0; }
+    }
+    @media (max-width: 767px) {
+      .header-inner { display: flex; flex-wrap: wrap; gap: 13px 20px; width: min(calc(100% - 32px), var(--max-width)); padding: 14px 0; }
+      .brand { flex: 1 1 auto; }
+      .search-form { order: 3; flex: 1 0 100%; }
+      .hero-wrap { padding: 16px 16px 0; }
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 40px 27px 31px; border-radius: 22px; }
+      .hero h1 { max-width: 550px; font-size: clamp(2.65rem, 12vw, 4rem); }
+      .hero-lede { font-size: .86rem; line-height: 1.7; }
+      .hero-actions { margin-top: 28px; }
+      .hero-facts { margin-top: 32px; }
+      .hero-visual { justify-content: flex-start; margin-top: 17px; }
+      .curation-board { width: min(100%, 430px); transform: none; }
+      .curation-strip { grid-template-columns: 1fr; width: min(calc(100% - 32px), var(--max-width)); gap: 20px; padding: 29px 0 11px; }
+      .strip-item, .strip-item:first-child { padding: 0; border-left: 0; }
+      .strip-item:not(:last-child) { padding-bottom: 19px; border-bottom: 1px solid var(--line); }
+      .products-section { width: min(calc(100% - 32px), var(--max-width)); padding: 63px 0 70px; }
+      .section-heading { display: block; margin-bottom: 22px; }
+      .section-copy { max-width: 450px; margin-top: 13px; text-align: left; }
+      .catalog-toolbar { margin-bottom: 14px; }
+      .editorial-note { width: min(calc(100% - 32px), var(--max-width)); margin-bottom: 68px; padding: 23px 20px; }
+      .site-footer { padding: 28px 16px 34px; }
+      .footer-inner { display: block; }
+      .footer-credit { margin-top: 20px; text-align: left; }
+      .dashboard-shell { width: min(calc(100% - 20px), 1440px); padding-top: 10px; }
+      .dashboard-header { align-items: flex-start; padding: 16px; }
+      .dashboard-header-right { display: block; text-align: right; }
+      .admin-user { display: block; margin-bottom: 8px; }
+      .dashboard-left { display: block; }
+      .dashboard-left .admin-panel + .admin-panel { margin-top: 14px; }
+      .admin-panel { padding: 18px; }
+      .admin-product-item { grid-template-columns: 52px minmax(0, 1fr); }
+      .admin-product-thumb { width: 52px; height: 52px; }
+      .admin-product-actions { grid-column: 1 / -1; justify-content: flex-start; padding-top: 3px; }
+      .modal-panel { padding: 26px 21px; }
+    }
+    @media (max-width: 479px) {
+      .product-grid { gap: 11px; }
+      .product-card { border-radius: 13px; }
+      .product-body { padding: 13px; }
+      .product-body h3 { margin-top: 11px; font-size: .78rem; }
+      .product-description { min-height: 39px; font-size: .64rem; }
+      .product-footer { display: block; margin-top: 16px; }
+      .buy-link { justify-content: flex-start; margin-top: 10px; }
+      .product-price { font-size: .82rem; }
+      .product-label { top: 9px; left: 9px; padding: 4px 6px; font-size: .46rem; }
+      .stars { font-size: .63rem; }
+      .rating-text { font-size: .56rem; }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions .button { width: 100%; }
+      .hero-facts { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell" id="top">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" id="brandTrigger" href="#top" aria-label="ommamarket, kembali ke atas">
+          <span class="brand-word">omma<span>market</span></span>
+          <span class="brand-note">curated finds</span>
+        </a>
+
+        <form class="search-form" id="searchForm" role="search">
+          <svg class="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.6"></circle>
+            <path d="m16 16 4.2 4.2"></path>
+          </svg>
+          <label class="sr-only" for="searchInput">Cari produk</label>
+          <input id="searchInput" type="search" autocomplete="off" placeholder="Cari produk yang kamu butuhkan...">
+          <button class="clear-search hidden" id="clearSearch" type="button" aria-label="Hapus pencarian">×</button>
+        </form>
+
+        <div class="header-actions">
+          <a class="header-link" href="#produk">
+            Lihat koleksi
+            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <div class="hero-wrap">
+        <section class="hero" aria-labelledby="heroTitle">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-dot"></span> Shopee affiliate picks</p>
+            <h1 id="heroTitle">Temukan produk terbaik dengan harga terbaik.</h1>
+            <p class="hero-lede">Kami menyaring pilihan yang menarik, berguna, dan layak dipertimbangkan—supaya kamu tidak perlu menghabiskan waktu di antara ribuan listing.</p>
+            <div class="hero-actions">
+              <button class="button button-primary" id="browseProducts" type="button">
+                Jelajahi produk
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path>
+                </svg>
+              </button>
+              <a class="button button-quiet" href="#cara-kerja">Cara kerja <span aria-hidden="true">↓</span></a>
+            </div>
+            <div class="hero-facts" aria-label="Keunggulan ommamarket">
+              <span class="hero-fact"><strong>01</strong> Kurasi singkat</span>
+              <span class="hero-fact"><strong>02</strong> Link resmi</span>
+              <span class="hero-fact"><strong>03</strong> Belanja langsung</span>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Ringkasan kurasi ommamarket">
+            <div class="curation-board">
+              <div class="board-top">
+                <span>omma / index</span>
+                <span class="board-status">live curation</span>
+              </div>
+              <div class="board-main">
+                <p class="board-number">FIELD NOTE / 001</p>
+                <h2>Yang berguna pantas ditemukan lebih mudah.</h2>
+                <div class="board-rule"></div>
+                <div class="board-list">
+                  <div class="board-item"><span class="board-index">01</span><div><strong>Usefulness first</strong><span>Bukan sekadar ramai</span></div><b>01</b></div>
+                  <div class="board-item"><span class="board-index">02</span><div><strong>Price in context</strong><span>Harga mudah dibaca</span></div><b>02</b></div>
+                  <div class="board-item"><span class="board-index">03</span><div><strong>One clear action</strong><span>Langsung ke Shopee</span></div><b>03</b></div>
+                </div>
+              </div>
+              <div class="board-bottom"><span>updated by omma</span><span>07 / 24</span></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="curation-strip" id="cara-kerja" aria-label="Cara kerja ommamarket">
+        <div class="strip-item"><span class="strip-number">01</span><div class="strip-copy"><strong>Pilih dengan konteks</strong><p>Setiap produk hadir dengan deskripsi yang membantu, bukan sekadar judul listing.</p></div></div>
+        <div class="strip-item"><span class="strip-number">02</span><div class="strip-copy"><strong>Bandingkan dengan tenang</strong><p>Harga dan rating ditempatkan di tempat yang mudah dipindai.</p></div></div>
+        <div class="strip-item"><span class="strip-number">03</span><div class="strip-copy"><strong>Berangkat ke Shopee</strong><p>Tombol beli membawa kamu ke tautan afiliasi resmi yang disiapkan admin.</p></div></div>
+      </section>
+
+      <section class="products-section" id="produk" aria-labelledby="productsTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">The current shelf</p>
+            <h2 id="productsTitle">Pilihan yang sedang tersedia</h2>
+          </div>
+          <p class="section-copy">Cari berdasarkan nama produk. Kalau katalog masih kosong, halaman ini akan mengatakannya dengan jelas.</p>
+        </div>
+        <div class="catalog-toolbar">
+          <span class="catalog-count" id="resultCount">Memuat produk...</span>
+          <button class="text-button hidden" id="emptyClearSearch" type="button">Hapus pencarian</button>
+        </div>
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+        <div class="empty-state hidden" id="emptyState">
+          <div class="empty-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h16v13H4z"></path><path d="M8 6.5 9.5 4h5L16 6.5"></path><circle cx="12" cy="12.7" r="2.2"></circle></svg>
+          </div>
+          <h3 id="emptyTitle">Belum ada produk tersedia</h3>
+          <p id="emptyDescription">Rak ini sedang disiapkan. Produk yang sudah dikurasi akan muncul di sini.</p>
+          <button class="text-button hidden" id="emptyClearButton" type="button">Kembali ke semua produk</button>
+        </div>
+      </section>
+
+      <aside class="editorial-note">
+        <p><strong>Catatan transparansi:</strong> ommamarket adalah katalog afiliasi. Saat kamu melanjutkan pembelian melalui tautan produk, kami dapat menerima komisi tanpa mengubah harga yang kamu lihat di Shopee.</p>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div><div class="footer-brand">ommamarket</div><p class="footer-copy">© <span id="currentYear"></span> ommamarket. Semua hak dilindungi.</p></div>
+        <div class="footer-credit">Powered by <strong>Shopee Affiliate</strong></div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="modal-backdrop hidden" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <div class="modal-panel">
+      <button class="modal-close" id="closeLogin" type="button" aria-label="Tutup login">×</button>
+      <p class="modal-kicker">restricted access</p>
+      <h2 id="loginTitle">Masuk ke dashboard</h2>
+      <p class="modal-lede">Kelola rak produk, tautan afiliasi, dan informasi katalog dari satu tempat.</p>
+      <form class="form-stack" id="loginForm">
+        <div class="field"><label for="usernameInput">Username</label><input id="usernameInput" name="username" type="text" autocomplete="username" required></div>
+        <div class="field"><label for="passwordInput">Password</label><input id="passwordInput" name="password" type="password" autocomplete="current-password" required></div>
+        <p class="form-error" id="loginError" role="alert"></p>
+        <div class="form-actions"><button class="button button-dark" id="loginButton" type="submit">Login</button></div>
+      </form>
+    </div>
+  </div>
+
+  <section class="admin-dashboard hidden" id="adminDashboard" aria-label="Dashboard Admin">
+    <div class="dashboard-shell">
+      <header class="dashboard-header">
+        <div><p class="dashboard-kicker">ommamarket / control room</p><h2>Dashboard Admin</h2></div>
+        <div class="dashboard-header-right"><span class="admin-user" id="adminUserLabel"></span><button class="button button-outline" id="logoutButton" type="button">Logout</button></div>
+      </header>
+
+      <div class="dashboard-grid">
+        <div class="dashboard-left">
+          <section class="admin-panel">
+            <div class="admin-panel-heading"><div><h3>Ringkasan</h3><p>Satu angka untuk memantau rak saat ini.</p></div></div>
+            <div class="stat-card"><span>Total produk</span><strong id="totalProducts">0</strong></div>
+          </section>
+
+          <section class="admin-panel">
+            <div class="admin-panel-heading"><div><h3 id="productFormTitle">Tambah produk</h3><p>Isi detail yang akan terlihat di storefront.</p></div></div>
+            <form class="admin-form" id="productForm">
+              <div class="form-stack">
+                <div class="field"><label for="productName">Nama produk <span aria-hidden="true">*</span></label><input id="productName" name="name" type="text" maxlength="140" required placeholder="Contoh: Lampu meja minimalis"></div>
+                <div class="field"><label for="productImage">URL gambar produk <span aria-hidden="true">*</span></label><input id="productImage" name="image" type="url" maxlength="2000" required placeholder="https://..."><span class="field-hint">Gunakan URL gambar HTTPS yang bisa diakses publik.</span></div>
+                <div class="field"><label for="productDescription">Deskripsi produk <span aria-hidden="true">*</span></label><textarea id="productDescription" name="description" maxlength="600" required placeholder="Apa yang membuat produk ini layak dipertimbangkan?"></textarea></div>
+                <div class="field"><label for="productPrice">Harga produk <span aria-hidden="true">*</span></label><input id="productPrice" name="price" type="number" min="0" max="999999999" step="1" required placeholder="150000"><span class="field-hint">Masukkan angka tanpa titik atau simbol Rupiah.</span></div>
+                <div class="field"><label for="productShopeeLink">Link Shopee afiliasi <span aria-hidden="true">*</span></label><input id="productShopeeLink" name="shopeeLink" type="url" maxlength="2000" required placeholder="https://shopee.co.id/..."></div>
+              </div>
+              <div class="form-actions"><button class="button button-dark" id="productSubmitButton" type="submit">Tambah produk</button><button class="button button-outline hidden" id="cancelEditButton" type="button">Batal edit</button></div>
+              <p class="form-error" id="productFormError" role="alert"></p>
+            </form>
+          </section>
+        </div>
+
+        <section class="admin-panel">
+          <div class="admin-panel-heading"><div><h3>Produk yang tersimpan</h3><p>Edit detail atau hapus produk dari storefront.</p></div></div>
+          <div class="admin-product-list" id="adminProductList"></div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-backdrop hidden" id="confirmModal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="modal-panel modal-panel-small">
+      <p class="modal-kicker">please confirm</p>
+      <h2 id="confirmTitle">Hapus produk ini?</h2>
+      <p class="modal-lede" id="confirmDescription">Produk akan dihapus dari katalog dan tidak bisa dikembalikan dari dashboard.</p>
+      <div class="form-actions"><button class="button button-danger" id="confirmDeleteButton" type="button">Hapus produk</button><button class="button button-outline" id="cancelDeleteButton" type="button">Batal</button></div>
+    </div>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const state = {
+        products: [],
+        query: '',
+        csrfToken: '',
+        isAdmin: false,
+        editingId: null,
+        pendingDeleteId: null,
+        logoClicks: 0,
+        lastLogoClick: 0,
+      };
+
+      const $ = (selector) => document.querySelector(selector);
+      const els = {
+        brandTrigger: $('#brandTrigger'),
+        searchForm: $('#searchForm'),
+        searchInput: $('#searchInput'),
+        clearSearch: $('#clearSearch'),
+        browseProducts: $('#browseProducts'),
+        productGrid: $('#productGrid'),
+        emptyState: $('#emptyState'),
+        emptyTitle: $('#emptyTitle'),
+        emptyDescription: $('#emptyDescription'),
+        emptyClearSearch: $('#emptyClearSearch'),
+        emptyClearButton: $('#emptyClearButton'),
+        resultCount: $('#resultCount'),
+        loginModal: $('#loginModal'),
+        closeLogin: $('#closeLogin'),
+        loginForm: $('#loginForm'),
+        loginButton: $('#loginButton'),
+        loginError: $('#loginError'),
+        usernameInput: $('#usernameInput'),
+        passwordInput: $('#passwordInput'),
+        adminDashboard: $('#adminDashboard'),
+        adminUserLabel: $('#adminUserLabel'),
+        logoutButton: $('#logoutButton'),
+        totalProducts: $('#totalProducts'),
+        productForm: $('#productForm'),
+        productFormTitle: $('#productFormTitle'),
+        productName: $('#productName'),
+        productImage: $('#productImage'),
+        productDescription: $('#productDescription'),
+        productPrice: $('#productPrice'),
+        productShopeeLink: $('#productShopeeLink'),
+        productSubmitButton: $('#productSubmitButton'),
+        cancelEditButton: $('#cancelEditButton'),
+        productFormError: $('#productFormError'),
+        adminProductList: $('#adminProductList'),
+        confirmModal: $('#confirmModal'),
+        confirmDescription: $('#confirmDescription'),
+        confirmDeleteButton: $('#confirmDeleteButton'),
+        cancelDeleteButton: $('#cancelDeleteButton'),
+        toastRegion: $('#toastRegion'),
+        currentYear: $('#currentYear'),
+      };
+
+      const money = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 });
+      els.currentYear.textContent = new Date().getFullYear();
+
+      function showToast(message, type = 'success') {
+        const toast = document.createElement('div');
+        toast.className = `toast${type === 'error' ? ' error' : ''}`;
+        toast.textContent = message;
+        els.toastRegion.appendChild(toast);
+        window.setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateY(8px)';
+          toast.style.transition = 'opacity .2s ease, transform .2s ease';
+          window.setTimeout(() => toast.remove(), 220);
+        }, 3400);
+      }
+
+      async function apiFetch(url, options = {}) {
+        const requestOptions = { ...options, credentials: 'same-origin' };
+        const headers = new Headers(options.headers || {});
+        const method = (options.method || 'GET').toUpperCase();
+        if (options.body && !headers.has('Content-Type')) headers.set('Content-Type', 'application/json');
+        if (state.csrfToken && ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) headers.set('X-CSRF-Token', state.csrfToken);
+        requestOptions.headers = headers;
+
+        const response = await fetch(url, requestOptions);
+        let payload = {};
+        try { payload = await response.json(); } catch { payload = {}; }
+        if (!response.ok) {
+          if (response.status === 401 && state.isAdmin) handleLoggedOut();
+          throw new Error(payload.message || 'Permintaan tidak dapat diproses.');
+        }
+        return payload;
+      }
+
+      function handleLoggedOut() {
+        state.isAdmin = false;
+        state.csrfToken = '';
+        closeDashboard();
+      }
+
+      function formatCount(count) {
+        return `${count} produk`;
+      }
+
+      function setLoading(isLoading) {
+        if (!isLoading) return;
+        els.productGrid.className = 'loading-grid';
+        els.productGrid.innerHTML = '';
+        for (let i = 0; i < 4; i += 1) {
+          const card = document.createElement('div');
+          card.className = 'skeleton-card';
+          card.innerHTML = '<div class="skeleton-block skeleton-media"></div><div class="skeleton-block skeleton-copy"></div><div class="skeleton-block skeleton-copy short"></div>';
+          els.productGrid.appendChild(card);
+        }
+        els.emptyState.classList.add('hidden');
+        els.resultCount.textContent = 'Memuat produk...';
+      }
+
+      function clearLoading() {
+        els.productGrid.className = 'product-grid';
+      }
+
+      function makeArrowIcon() {
+        const wrapper = document.createElement('span');
+        wrapper.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path></svg>';
+        return wrapper.firstElementChild;
+      }
+
+      function createProductCard(product, index) {
+        const card = document.createElement('article');
+        card.className = 'product-card';
+        card.style.setProperty('--card-index', index);
+
+        const media = document.createElement('div');
+        media.className = 'product-media';
+        const image = document.createElement('img');
+        image.src = product.image;
+        image.alt = product.name;
+        image.loading = 'lazy';
+        image.referrerPolicy = 'no-referrer';
+        const fallback = document.createElement('div');
+        fallback.className = 'media-fallback hidden';
+        const fallbackText = document.createElement('span');
+        fallbackText.textContent = 'Gambar produk tidak tersedia';
+        fallback.appendChild(fallbackText);
+        image.addEventListener('error', () => {
+          image.classList.add('hidden');
+          fallback.classList.remove('hidden');
+        });
+        const label = document.createElement('span');
+        label.className = 'product-label';
+        label.textContent = 'SHOPEE FIND';
+        media.append(image, fallback, label);
+
+        const body = document.createElement('div');
+        body.className = 'product-body';
+        const meta = document.createElement('div');
+        meta.className = 'product-meta';
+        const stars = document.createElement('span');
+        stars.className = 'stars';
+        stars.setAttribute('aria-label', 'Rating 5 dari 5');
+        stars.textContent = '★★★★★';
+        const rating = document.createElement('span');
+        rating.className = 'rating-text';
+        rating.textContent = '5.0 / 5';
+        meta.append(stars, rating);
+
+        const title = document.createElement('h3');
+        title.title = product.name;
+        title.textContent = product.name;
+        const description = document.createElement('p');
+        description.className = 'product-description';
+        description.textContent = product.description;
+
+        const footer = document.createElement('div');
+        footer.className = 'product-footer';
+        const price = document.createElement('strong');
+        price.className = 'product-price';
+        price.textContent = money.format(product.price);
+        const buyLink = document.createElement('a');
+        buyLink.className = 'buy-link';
+        buyLink.href = product.shopeeLink;
+        buyLink.target = '_blank';
+        buyLink.rel = 'noopener noreferrer';
+        buyLink.append(document.createTextNode('🛒 Beli sekarang '), makeArrowIcon());
+        footer.append(price, buyLink);
+        body.append(meta, title, description, footer);
+        card.append(media, body);
+        return card;
+      }
+
+      function renderProducts() {
+        clearLoading();
+        const query = state.query.trim().toLocaleLowerCase('id-ID');
+        const visibleProducts = state.products.filter((product) => product.name.toLocaleLowerCase('id-ID').includes(query));
+        els.productGrid.innerHTML = '';
+        els.resultCount.textContent = query ? `${visibleProducts.length} dari ${state.products.length} produk` : formatCount(state.products.length);
+        els.clearSearch.classList.toggle('hidden', !state.query);
+        els.emptyClearSearch.classList.toggle('hidden', !query || visibleProducts.length > 0);
+
+        if (visibleProducts.length > 0) {
+          els.emptyState.classList.add('hidden');
+          visibleProducts.forEach((product, index) => els.productGrid.appendChild(createProductCard(product, index)));
+          return;
+        }
+
+        els.emptyState.classList.remove('hidden');
+        if (query) {
+          els.emptyTitle.textContent = 'Produk tidak ditemukan';
+          els.emptyDescription.textContent = `Belum ada produk yang cocok dengan “${state.query}”. Coba kata pencarian lain atau tampilkan semua produk.`;
+          els.emptyClearButton.classList.remove('hidden');
+        } else {
+          els.emptyTitle.textContent = 'Belum ada produk tersedia';
+          els.emptyDescription.textContent = 'Rak ini sedang disiapkan. Produk yang sudah dikurasi akan muncul di sini.';
+          els.emptyClearButton.classList.add('hidden');
+        }
+      }
+
+      async function loadProducts() {
+        setLoading(true);
+        try {
+          const payload = await apiFetch('/api/products');
+          state.products = Array.isArray(payload.products) ? payload.products : [];
+          renderProducts();
+          if (state.isAdmin) renderAdminProducts();
+        } catch (error) {
+          clearLoading();
+          els.resultCount.textContent = 'Katalog tidak tersedia';
+          els.productGrid.innerHTML = '';
+          els.emptyState.classList.remove('hidden');
+          els.emptyTitle.textContent = 'Katalog sedang bermasalah';
+          els.emptyDescription.textContent = error.message;
+          showToast(error.message, 'error');
+        }
+      }
+
+      function openLogin() {
+        if (state.isAdmin) {
+          openDashboard();
+          return;
+        }
+        els.loginError.textContent = '';
+        els.loginModal.classList.remove('hidden');
+        document.body.classList.add('is-locked');
+        window.setTimeout(() => els.usernameInput.focus(), 40);
+      }
+
+      function closeLogin() {
+        els.loginModal.classList.add('hidden');
+        if (els.adminDashboard.classList.contains('hidden') && els.confirmModal.classList.contains('hidden')) document.body.classList.remove('is-locked');
+      }
+
+      function openDashboard() {
+        closeLogin();
+        els.adminDashboard.classList.remove('hidden');
+        document.body.classList.add('is-locked');
+        els.adminUserLabel.textContent = state.isAdmin ? `Signed in as ${state.adminUser || 'admin'}` : '';
+        renderAdminProducts();
+      }
+
+      function closeDashboard() {
+        els.adminDashboard.classList.add('hidden');
+        if (els.loginModal.classList.contains('hidden') && els.confirmModal.classList.contains('hidden')) document.body.classList.remove('is-locked');
+      }
+
+      function resetProductForm() {
+        state.editingId = null;
+        els.productForm.reset();
+        els.productFormTitle.textContent = 'Tambah produk';
+        els.productSubmitButton.textContent = 'Tambah produk';
+        els.cancelEditButton.classList.add('hidden');
+        els.productFormError.textContent = '';
+      }
+
+      function startEditing(product) {
+        state.editingId = String(product.id);
+        els.productName.value = product.name;
+        els.productImage.value = product.image;
+        els.productDescription.value = product.description;
+        els.productPrice.value = product.price;
+        els.productShopeeLink.value = product.shopeeLink;
+        els.productFormTitle.textContent = 'Edit produk';
+        els.productSubmitButton.textContent = 'Update produk';
+        els.cancelEditButton.classList.remove('hidden');
+        els.productFormError.textContent = '';
+        els.productName.focus();
+        document.querySelector('.dashboard-left').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      function createAdminProductItem(product) {
+        const item = document.createElement('article');
+        item.className = 'admin-product-item';
+        const thumb = document.createElement('div');
+        thumb.className = 'admin-product-thumb';
+        const image = document.createElement('img');
+        image.src = product.image;
+        image.alt = '';
+        image.loading = 'lazy';
+        image.referrerPolicy = 'no-referrer';
+        image.addEventListener('error', () => { image.src = 'data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 80 80%27%3E%3Crect width=%2780%27 height=%2780%27 fill=%27%23f3eee8%27/%3E%3Cpath d=%27M20 58 34 43l9 9 7-8 10 14%27 fill=%27none%27 stroke=%27%23ee4d2d%27 stroke-width=%273%27/%3E%3C/svg%3E'; });
+        thumb.appendChild(image);
+        const info = document.createElement('div');
+        info.className = 'admin-product-info';
+        const name = document.createElement('strong');
+        name.textContent = product.name;
+        const price = document.createElement('span');
+        price.textContent = money.format(product.price);
+        const description = document.createElement('small');
+        description.textContent = product.description;
+        info.append(name, price, description);
+        const actions = document.createElement('div');
+        actions.className = 'admin-product-actions';
+        const edit = document.createElement('button');
+        edit.className = 'mini-button';
+        edit.type = 'button';
+        edit.textContent = 'Edit';
+        edit.addEventListener('click', () => startEditing(product));
+        const remove = document.createElement('button');
+        remove.className = 'mini-button delete';
+        remove.type = 'button';
+        remove.textContent = 'Hapus';
+        remove.addEventListener('click', () => openConfirmDelete(product));
+        actions.append(edit, remove);
+        item.append(thumb, info, actions);
+        return item;
+      }
+
+      function renderAdminProducts() {
+        els.totalProducts.textContent = state.products.length;
+        els.adminProductList.innerHTML = '';
+        if (!state.products.length) {
+          const empty = document.createElement('div');
+          empty.className = 'admin-empty';
+          empty.textContent = 'Belum ada produk. Tambahkan produk pertama dari form di sebelah kiri.';
+          els.adminProductList.appendChild(empty);
+          return;
+        }
+        state.products.forEach((product) => els.adminProductList.appendChild(createAdminProductItem(product)));
+      }
+
+      function openConfirmDelete(product) {
+        state.pendingDeleteId = String(product.id);
+        els.confirmDescription.textContent = `“${product.name}” akan dihapus dari katalog dan tidak bisa dikembalikan dari dashboard.`;
+        els.confirmModal.classList.remove('hidden');
+        document.body.classList.add('is-locked');
+        els.cancelDeleteButton.focus();
+      }
+
+      function closeConfirmDelete() {
+        state.pendingDeleteId = null;
+        els.confirmModal.classList.add('hidden');
+        if (els.loginModal.classList.contains('hidden') && els.adminDashboard.classList.contains('hidden')) document.body.classList.remove('is-locked');
+      }
+
+      async function deleteProduct() {
+        if (!state.pendingDeleteId) return;
+        els.confirmDeleteButton.disabled = true;
+        try {
+          await apiFetch(`/api/products/${encodeURIComponent(state.pendingDeleteId)}`, { method: 'DELETE' });
+          closeConfirmDelete();
+          if (state.editingId === state.pendingDeleteId) resetProductForm();
+          await loadProducts();
+          showToast('Produk berhasil dihapus.');
+        } catch (error) {
+          showToast(error.message, 'error');
+        } finally {
+          els.confirmDeleteButton.disabled = false;
+        }
+      }
+
+      function getProductPayload() {
+        return {
+          name: els.productName.value.trim(),
+          image: els.productImage.value.trim(),
+          description: els.productDescription.value.trim(),
+          price: Number(els.productPrice.value),
+          shopeeLink: els.productShopeeLink.value.trim(),
+        };
+      }
+
+      async function submitProduct(event) {
+        event.preventDefault();
+        els.productFormError.textContent = '';
+        els.productSubmitButton.disabled = true;
+        try {
+          const editing = Boolean(state.editingId);
+          await apiFetch(editing ? `/api/products/${encodeURIComponent(state.editingId)}` : '/api/products', {
+            method: editing ? 'PUT' : 'POST',
+            body: JSON.stringify(getProductPayload()),
+          });
+          resetProductForm();
+          await loadProducts();
+          showToast(editing ? 'Produk berhasil diupdate.' : 'Produk berhasil ditambahkan.');
+        } catch (error) {
+          els.productFormError.textContent = error.message;
+        } finally {
+          els.productSubmitButton.disabled = false;
+        }
+      }
+
+      async function login(event) {
+        event.preventDefault();
+        els.loginError.textContent = '';
+        els.loginButton.disabled = true;
+        try {
+          const payload = await apiFetch('/api/auth/login', { method: 'POST', body: JSON.stringify({ username: els.usernameInput.value, password: els.passwordInput.value }) });
+          state.isAdmin = true;
+          state.adminUser = payload.user?.username || els.usernameInput.value;
+          state.csrfToken = payload.csrfToken || '';
+          els.loginForm.reset();
+          closeLogin();
+          openDashboard();
+          showToast('Login berhasil.');
+        } catch (error) {
+          els.loginError.textContent = error.message;
+        } finally {
+          els.loginButton.disabled = false;
+        }
+      }
+
+      async function logout() {
+        els.logoutButton.disabled = true;
+        try {
+          await apiFetch('/api/auth/logout', { method: 'POST' });
+          showToast('Anda sudah logout.');
+        } catch (error) {
+          showToast(error.message, 'error');
+        } finally {
+          state.isAdmin = false;
+          state.csrfToken = '';
+          state.adminUser = '';
+          resetProductForm();
+          closeDashboard();
+          els.logoutButton.disabled = false;
+        }
+      }
+
+      async function hydrateAuth() {
+        try {
+          const payload = await apiFetch('/api/auth/me');
+          state.isAdmin = Boolean(payload.authenticated);
+          state.csrfToken = payload.csrfToken || '';
+          state.adminUser = payload.user?.username || '';
+        } catch {
+          state.isAdmin = false;
+        }
+      }
+
+      function handleLogoClick(event) {
+        const timestamp = Date.now();
+        if (timestamp - state.lastLogoClick <= 2000) state.logoClicks += 1;
+        else state.logoClicks = 1;
+        state.lastLogoClick = timestamp;
+        if (state.logoClicks >= 3) {
+          event.preventDefault();
+          state.logoClicks = 0;
+          openLogin();
+        }
+      }
+
+      function updateSearch() {
+        state.query = els.searchInput.value;
+        renderProducts();
+      }
+
+      function clearSearch() {
+        state.query = '';
+        els.searchInput.value = '';
+        renderProducts();
+        els.searchInput.focus();
+      }
+
+      els.brandTrigger.addEventListener('click', handleLogoClick);
+      els.searchForm.addEventListener('submit', (event) => event.preventDefault());
+      els.searchInput.addEventListener('input', updateSearch);
+      els.clearSearch.addEventListener('click', clearSearch);
+      els.emptyClearSearch.addEventListener('click', clearSearch);
+      els.emptyClearButton.addEventListener('click', clearSearch);
+      els.browseProducts.addEventListener('click', () => $('#produk').scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      els.closeLogin.addEventListener('click', closeLogin);
+      els.loginModal.addEventListener('click', (event) => { if (event.target === els.loginModal) closeLogin(); });
+      els.loginForm.addEventListener('submit', login);
+      els.logoutButton.addEventListener('click', logout);
+      els.productForm.addEventListener('submit', submitProduct);
+      els.cancelEditButton.addEventListener('click', resetProductForm);
+      els.cancelDeleteButton.addEventListener('click', closeConfirmDelete);
+      els.confirmDeleteButton.addEventListener('click', deleteProduct);
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        if (!els.confirmModal.classList.contains('hidden')) closeConfirmDelete();
+        else if (!els.loginModal.classList.contains('hidden')) closeLogin();
+      });
+
+      (async function init() {
+        await hydrateAuth();
+        await loadProducts();
+      })();
+    })();
+  </script>
+</body>
+</html>

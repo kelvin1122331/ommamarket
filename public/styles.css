@@ -664,3 +664,92 @@
   .home-shelf-copy { margin: 17px 0 0; }
   .home-shelf-stat { margin-top: 30px; }
 }
+
+/* Welcome landing page */
+.welcome-wrap { padding: 28px 24px 0; }
+.welcome-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
+  gap: clamp(35px, 6vw, 90px);
+  align-items: center;
+  width: min(100%, var(--max-width));
+  min-height: 600px;
+  margin: 0 auto;
+  padding: clamp(42px, 6vw, 84px);
+  overflow: hidden;
+  border: 1px solid #e5dcd2;
+  border-radius: 30px;
+  background: #f1ebe3;
+}
+.welcome-hero::before {
+  position: absolute;
+  top: 0;
+  right: 39%;
+  width: 1px;
+  height: 100%;
+  background: #e2d7cc;
+  content: "";
+  transform: rotate(19deg) scaleY(1.35);
+  transform-origin: center;
+}
+.welcome-copy, .welcome-art { position: relative; z-index: 1; }
+.welcome-copy { max-width: 650px; }
+.welcome-overline { display: flex; align-items: center; gap: 10px; margin: 0 0 24px; color: var(--brand); font-size: .67rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+.welcome-line { width: 29px; height: 2px; background: var(--brand); }
+.welcome-copy h1 { max-width: 640px; margin: 0; color: var(--ink); font-size: clamp(2.9rem, 6vw, 5.8rem); font-weight: 700; letter-spacing: -.1em; line-height: .95; }
+.welcome-lede { max-width: 520px; margin: 27px 0 0; color: var(--muted); font-size: .91rem; line-height: 1.85; }
+.welcome-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; margin-top: 34px; }
+.button-welcome { color: #fff9f2; background: var(--brand); box-shadow: 0 10px 22px rgba(183, 49, 31, .17); }
+.button-welcome:hover { background: var(--brand-deep); box-shadow: 0 14px 27px rgba(183, 49, 31, .23); }
+.welcome-text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-soft); font-size: .72rem; font-weight: 700; transition: color .2s ease, gap .2s ease; }
+.welcome-text-link:hover { gap: 11px; color: var(--brand); }
+.welcome-signals { display: flex; flex-wrap: wrap; gap: 25px; margin-top: 55px; padding-top: 19px; border-top: 1px solid #dbd0c6; }
+.welcome-signals div { display: grid; grid-template-columns: auto 1fr; column-gap: 8px; align-items: baseline; }
+.welcome-signals span { grid-row: 1 / span 2; color: var(--brand); font-size: .61rem; font-weight: 800; }
+.welcome-signals strong { color: var(--ink-soft); font-size: .67rem; font-weight: 700; }
+.welcome-signals small { color: var(--muted); font-size: .57rem; }
+.welcome-art { display: flex; align-items: center; justify-content: center; min-height: 440px; }
+.welcome-art::before { position: absolute; inset: 0 -40px 0 22px; border: 1px solid rgba(238, 77, 45, .2); content: ""; transform: rotate(-7deg); }
+.welcome-card { position: relative; width: min(100%, 380px); padding: 16px; background: var(--brand); color: #fff9f2; box-shadow: 22px 24px 0 rgba(33, 29, 26, .08); transform: rotate(3deg); }
+.welcome-card-head, .welcome-card-foot { display: flex; align-items: center; justify-content: space-between; color: rgba(255, 249, 242, .72); font-size: .58rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.welcome-card-body { min-height: 362px; margin-top: 16px; padding: 25px 23px 24px; background: #fff1e5; color: var(--ink); }
+.welcome-stamp { display: inline-grid; place-items: center; width: 64px; height: 64px; border: 1px solid #dcbca9; border-radius: 50%; color: var(--brand); font-size: .7rem; font-weight: 800; letter-spacing: -.07em; line-height: .78; text-align: center; transform: rotate(-10deg); }
+.welcome-stamp span { font-size: .55rem; letter-spacing: .02em; }
+.welcome-card-kicker { margin: 30px 0 0; color: var(--brand); font-size: .63rem; font-weight: 800; letter-spacing: .12em; line-height: 1.6; text-transform: uppercase; }
+.welcome-card h2 { margin: 17px 0 25px; font-size: clamp(1.95rem, 4vw, 2.75rem); font-weight: 700; letter-spacing: -.09em; line-height: .96; }
+.welcome-card-rule { width: 100%; height: 1px; background: #ddc9ba; }
+.welcome-card-note { max-width: 230px; margin: 17px 0 0; color: var(--muted); font-size: .69rem; line-height: 1.7; }
+.welcome-caption { display: flex; position: absolute; right: -2px; bottom: 9px; align-items: center; gap: 8px; color: var(--muted); font-size: .56rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transform: rotate(-90deg) translateX(100%); transform-origin: right bottom; }
+.welcome-caption-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--brand); }
+@media (max-width: 1023px) {
+  .welcome-hero { grid-template-columns: minmax(0, 1fr) minmax(280px, .75fr); padding: 55px; gap: 35px; }
+  .welcome-copy h1 { font-size: clamp(2.9rem, 5.5vw, 4.5rem); }
+  .welcome-art { min-height: 390px; }
+  .welcome-card-body { min-height: 320px; }
+}
+@media (max-width: 767px) {
+  .welcome-wrap { padding: 16px 16px 0; }
+  .welcome-hero { display: block; min-height: auto; padding: 42px 27px 31px; border-radius: 22px; }
+  .welcome-hero::before { top: auto; right: 20%; bottom: 34%; width: 1px; height: 28%; transform: rotate(23deg); }
+  .welcome-copy h1 { font-size: clamp(2.85rem, 12vw, 4.2rem); }
+  .welcome-lede { font-size: .83rem; line-height: 1.75; }
+  .welcome-actions { align-items: flex-start; flex-direction: column; gap: 16px; margin-top: 28px; }
+  .welcome-signals { gap: 15px; margin-top: 36px; }
+  .welcome-signals div { min-width: 105px; }
+  .welcome-art { min-height: 400px; margin-top: 35px; }
+  .welcome-art::before { right: 0; left: 12px; }
+  .welcome-card { width: min(100%, 365px); }
+  .welcome-caption { right: -3px; bottom: 2px; }
+}
+@media (max-width: 479px) {
+  .welcome-signals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+  .welcome-signals div { display: block; min-width: 0; }
+  .welcome-signals span, .welcome-signals strong, .welcome-signals small { display: block; }
+  .welcome-signals strong { margin-top: 6px; font-size: .62rem; }
+  .welcome-signals small { margin-top: 2px; font-size: .52rem; line-height: 1.35; }
+  .welcome-art { min-height: 350px; }
+  .welcome-card-body { min-height: 285px; padding: 20px 18px; }
+  .welcome-card h2 { margin-top: 14px; font-size: 2rem; }
+  .welcome-caption { display: none; }
+}
